@@ -49,9 +49,6 @@ function countTweet($symbol)
   $req = $connection->get("search/tweets", $params);
 
   // １時間毎のツイート数を出力
-  // まず100個のツイートを取得
-  // 100個目のツイートが直近１時間以内なら100を出力
-  // 100個目のツイートが直近１時間以内でなければ、どのツイートまでが１時間前か調べる
   foreach ($req->statuses as $index => $status) {
     $created_at = new DateTime($status->created_at);
     $now = new Datetime("now");
